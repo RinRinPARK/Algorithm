@@ -30,7 +30,7 @@ def BFS(arr, curr, viruses):
             if (curr[i][j] == 0):
                 return -1
 
-    return count-1
+    return count
 
 
 N, M = map(int, sys.stdin.readline().split())
