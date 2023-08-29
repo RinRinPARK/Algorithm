@@ -22,7 +22,7 @@ def move(action, A):
                 if (0 <= nx < 2**N) and (0 <= ny < 2**N) and (A[nx][ny] > 0):
                     count += 1
 
-            if count < 3:
+            if (count < 3) and (A[a][b] != 0):
                 melting.append([a, b])
 
     for x, y in melting:
