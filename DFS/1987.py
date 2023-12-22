@@ -1,4 +1,4 @@
-# BFS로 구현한 코드. 시간초과
+# 시간초과
 """
 import sys
 from collections import deque
@@ -39,7 +39,7 @@ print(result)
 """
 import sys
 
-# x좌표(행좌표), y좌표(열좌표), 지나온 칸 개수, 지나온 칸 문자 집합
+# x좌표(행좌표), y좌표(열좌표), 지나온 칸 개수
 def dfs(x, y, count):
     global result
 
