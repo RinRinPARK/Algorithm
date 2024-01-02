@@ -12,9 +12,9 @@ for _ in range(M):
     a, b, c = map(int, sys.stdin.readline().split())
     graph[a][b] = min(graph[a][b], c)
 
-for m in range(1, N+1):
-    for n in range(1, N+1):
-        for k in range(1, N+1): 
+for k in range(1, N+1):
+    for m in range(1, N+1):
+        for n in range(1, N+1): 
             graph[m][n] = min(graph[m][n], graph[m][k]+graph[k][n])
 
 
