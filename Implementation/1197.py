@@ -11,9 +11,9 @@ def union(a,b):
     y = find(b)
 
     if (x > y):
-        parent[a] = y
+        parent[x] = y
     else:
-        parent[b] = x
+        parent[y] = x
 
 V, E = map(int,sys.stdin.readline().split())
 parent = [i for i in range(V+1)]
@@ -25,8 +25,7 @@ for _ in range(E):
     tree.append([C, A, B])
 tree.sort()
 
-for t in tree:
-    C,A,B = t
+for C,A,B in tree:
     if find(A) != find(B):
         union(A, B)
         result += C
