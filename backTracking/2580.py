@@ -1,5 +1,5 @@
 """
-bruteforce 무지성 풀이
+# Bruteforce로 무지성 풀이
 
 import sys
 from collections import deque
@@ -135,3 +135,71 @@ while queue:
 for v in graph:
     print(*v)
 """
+
+import sys
+
+graph = []
+find_lst = []
+for i in range(9):
+    lst = list(map(int, sys.stdin.readline().split()))
+    for j in range(9):
+        if lst[j] == 0:
+            find_lst.append([i,j])
+
+    graph.append(lst)
+
+
+def rowFind(x, i):
+    # 중복되는 숫자가 없으면
+    for k in graph[x]:
+        if k == i:
+            return False
+        
+    return  True
+
+def colFind(y, i):
+
+    for k in range(9):
+        if graph[k][y] == i:
+            return False
+        
+    return  True
+
+def blockFind(x, y, i):
+
+    # 1블록: 0 <= x < 3, 0 <= y < 3
+    # 2블록: 0 <= x < 3, 3 <= y < 6
+    # 3블록: 0 <= x < 3, 6 <= y < 9
+    # 4블록: 3 <= x < 6, 0 <= y < 3
+    # 5블록: 3 <= x < 6, 3 <= y < 6
+    # 6블록: 3 <= x < 6, 6 <= y < 9
+    # 7블록: 6 <= x < 9, 0 <= y < 3
+    # 8블록: 6 <= x < 9, 3 <= y < 6
+    # 9블록: 6 <= x < 9, 6 <= y < 9
+
+    nx = x//3 * 3
+    ny = y//3 * 3
+    for m in range(3):
+        for n in range(3):
+            if graph[nx+m][ny+n] == i:
+                return False
+    return True
+
+def dfs(n):
+
+    if n == len(find_lst):
+        for g in graph:
+            print(*g)
+        exit()
+
+    x = find_lst[n][0]
+    y = find_lst[n][1]
+
+    for i in range(1, 10):
+        if (rowFind(x,i)) and (colFind(y, i)) and (blockFind(x,y,i)):
+            graph[x][y] = i
+            dfs(n+1)
+            graph[x][y] = 0
+
+
+dfs(0)
