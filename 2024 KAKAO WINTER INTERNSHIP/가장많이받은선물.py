@@ -1,4 +1,5 @@
 # Lv.1
+# bruteForce
 def solution(friends, gifts):
     # 선물지수 = 준 선물 - 받은 선물
     # 선물지수가 큰 사람이 작은 사람에게 받음
