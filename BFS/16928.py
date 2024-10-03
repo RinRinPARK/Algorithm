@@ -30,9 +30,9 @@ while queue:
     for k in range(1, 7):
         n = x + k
         if (1 <= x + k < 101):
-            if (N in ladder.keys()):
+            if (n in ladder.keys()):
                 n = ladder[n]
-            elif (x + k in snake.keys()):
+            elif (n in snake.keys()):
                 n = snake[n]
             
             if (visited[n] > cnt + 1):
